@@ -8,6 +8,6 @@ const userSchema = new mongoose.Schema(
         isAdmin:{type:Boolean,default:false},
         isOwner:{type:Boolean,default:false}
     },
-    {timestamp:true}
-)
+    {timestamps:true}
+);
 module.exports = mongoose.model("User",userSchema);
