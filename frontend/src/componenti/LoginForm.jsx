@@ -5,7 +5,7 @@ import Button from "react-bootstrap/esm/Button";
 function Login(){
     return(
         
-            <Form style={{padding : "10px","width":"70vh"}}>
+            <Form style={{padding : "10px","width":"100%"}}>
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>

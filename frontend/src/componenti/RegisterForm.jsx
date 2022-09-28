@@ -3,7 +3,7 @@ import Button from "react-bootstrap/esm/Button";
 
 function Register(){
     return(
-        <Form style={{padding : "10px","width":"70vh"}}>
+        <Form style={{padding : "10px","width":"100%"}}>
                             <Form.Group className="mb-3" controlId="formBasicUsername">
                     <Form.Label>Username</Form.Label>
                     <Form.Control type="username" placeholder="Enter Username" />
