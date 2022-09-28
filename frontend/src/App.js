@@ -1,9 +1,10 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import OffcanvasMenu from './componenti/offcanvas';
+import Home from './pagine/Home';
+import LoginPage from './pagine/LoginPage';
 function App() {
   return (
-    <OffcanvasMenu />
+    <LoginPage/>
   );
 }
 
