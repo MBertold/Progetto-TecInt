@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+.collabora{
+  color: white;
+  margin: 5vh;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+.collabora span{
+  margin-bottom: 10px;
+}
