@@ -1,4 +1,5 @@
 const express = require('express')
+const cors =require("cors");
 const app = express()
 const port = 5000
 const mongoose = require("mongoose")
@@ -7,7 +8,12 @@ const userRoute = require("./routes/user")
 const authRoute = require("./routes/auth")
 dotenv.config();
 
-
+const corsOption = {
+    origin : "http://localhost:3000",
+    credentials:true,            //access-control-allow-credentials:true
+   optionSuccessStatus:200
+};
+app.use(cors(corsOption));
 
 mongoose.connect(
     process.env.MONGO_URL
