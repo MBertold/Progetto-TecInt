@@ -7,11 +7,12 @@ function Register(){
     const [formValue, setformValue] = React.useState({
         username: '',
         email:'',
-        password: ''
+        password: '',
+        isLogged: true
       });
     
       const handleSubmit = async() => {
-        const loginFormData = JSON.stringify({ username : formValue.username,femail:formValue.email, password : formValue.password});
+        const loginFormData = JSON.stringify({ username : formValue.username,email:formValue.email, password : formValue.password ,isLogged:formValue.isLogged});
 
   try {
     // make axios post request
@@ -35,7 +36,7 @@ function Register(){
 
 
     return(
-        <Form style={{padding : "10px","width":"100%"}}>
+        <Form style={{padding : "10px","width":"100%"}} onSubmit={handleSubmit}>
                             <Form.Group className="mb-3" >
                     <Form.Label>Username</Form.Label>
                     <Form.Control type="text" placeholder="Enter Username" name='username' value={formValue.username} onChange={handleChange}/>
