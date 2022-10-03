@@ -3,10 +3,12 @@ import Button from "react-bootstrap/esm/Button";
 import axios from "axios";
 import React from 'react';
 import {useState} from "react";
+import { useNavigate } from 'react-router-dom';
 
 function Login(){
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const navigate = useNavigate();
   console.log({ username, password })
   const handleUsername = (e) => {
     setUsername(e.target.value)
@@ -21,9 +23,13 @@ function Login(){
     axios.post('http://localhost:5000/api/auth/login', {
       username: username,
       password: password
-    }).then(result => {
-      console.log(result.data)
-      alert('success')
+    }).then((result) => {
+      if (result.data.accessToken){
+        localStorage.setItem("user",JSON.stringify(result.data));
+        navigate("/");
+        window.location.reload();
+      }
+      
     })
       .catch(error => {
         alert('service error')
