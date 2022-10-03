@@ -7,12 +7,12 @@ import authService from './servizi';
 
 function NavbarMenu() {
   const [currentUser, setCurrentUser] = useState(undefined);
-  useEffect(()=> {
+  useEffect(() => {
     const user = authService.getCurrentUser();
-    if(user){
+    if (user) {
       setCurrentUser(user);
     }
-  },[]);
+  }, []);
   const logOut = () => {
     authService.logout();
   };
@@ -32,22 +32,22 @@ function NavbarMenu() {
           <Nav.Link ><Link to='' style={{ textDecoration: 'none', color: 'inherit' }}>Ristoranti</Link></Nav.Link>
           {currentUser ? (
             <>
-            <Nav.Link>
-            <Link to='login' style={{ textDecoration: 'none', color: 'inherit' }} onClick={logOut}>
-              Logout
-            </Link>
-          </Nav.Link>
-            <Navbar.Text style={{marginLeft:"30px"}}>
-              <span>Signed in as : {currentUser.username}</span>
-            </Navbar.Text>
-              </>
-          ):(<Nav.Link>
+              <Nav.Link>
+                <Link to='/' style={{ textDecoration: 'none', color: 'inherit' }} onClick={logOut}>
+                  Logout
+                </Link>
+              </Nav.Link>
+              <Navbar.Text style={{ marginLeft: "30px" }}>
+                <span>Signed in as : {currentUser.username}</span>
+              </Navbar.Text>
+            </>
+          ) : (<Nav.Link>
             <Link to='login' style={{ textDecoration: 'none', color: 'inherit' }}>
               Login
             </Link>
           </Nav.Link>
           )}
-          
+
         </Nav>
       </Navbar.Collapse>
     </Navbar>

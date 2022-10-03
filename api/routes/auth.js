@@ -15,14 +15,14 @@ router.post("/register", async (req, res) => {
     try {
         const savedUser = await newUser.save();
         const accessToken = await jwt.sign(
-            {email:savedUser.email},
+            { email: savedUser.email },
             process.env.JWT_SEC,
             {
-                expiresIn:"3d",
+                expiresIn: "3d",
             }
         );
-        const {password, ...others} = savedUser._doc;
-        res.status(201).json({...others,accessToken});
+        const { password, ...others } = savedUser._doc;
+        res.status(201).json({ ...others, accessToken });
 
     } catch (err) {
         res.status(500).json(err);
@@ -45,17 +45,16 @@ router.post("/login", async (req, res) => {
             res.status(401).json("password errata!");
         const accessToken = await jwt.sign(
             {
-                email:user.email
+                email: user.email
             },
             process.env.JWT_SEC,
-            {expiresIn:"3d"}
+            { expiresIn: "3d" }
         );
         const { password, ...others } = user._doc;
-        res.status(200).json({ ...others,accessToken });
+        res.status(200).json({ ...others, accessToken });
     } catch (err) {
         res.status(500).json(err);
     }
 })
-//LOGOUT
 
 module.exports = router

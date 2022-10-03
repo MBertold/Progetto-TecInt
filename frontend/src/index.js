@@ -4,6 +4,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Home from './pagine/Home';
 import LoginPage from './pagine/LoginPage';
+import Ristoranti from './pagine/creaLocale';
 import { render } from "react-dom";
 import {
   BrowserRouter,
@@ -18,7 +19,8 @@ render(
       <Route path="/" element={<App />}>
         <Route index element={<Home />} />
       </Route>
-      <Route path='login'element={<LoginPage/>}/>
+      <Route path='login' element={<LoginPage />} />
+      <Route path='unisciti' element={<Ristoranti />} />
     </Routes>
   </BrowserRouter>,
   document.getElementById("root")

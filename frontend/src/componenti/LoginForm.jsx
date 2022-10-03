@@ -2,10 +2,10 @@ import Form from 'react-bootstrap/Form';
 import Button from "react-bootstrap/esm/Button";
 import axios from "axios";
 import React from 'react';
-import {useState} from "react";
+import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
-function Login(){
+function Login() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const navigate = useNavigate();
@@ -24,12 +24,12 @@ function Login(){
       username: username,
       password: password
     }).then((result) => {
-      if (result.data.accessToken){
-        localStorage.setItem("user",JSON.stringify(result.data));
+      if (result.data.accessToken) {
+        localStorage.setItem("user", JSON.stringify(result.data));
         navigate("/");
         window.location.reload();
       }
-      
+
     })
       .catch(error => {
         alert('service error')
@@ -38,25 +38,25 @@ function Login(){
   }
 
 
-    return(
-        
-            <Form style={{padding : "10px","width":"100%"}} onSubmit={handleApi}>
+  return (
 
-                <Form.Group className="mb-3">
-                    <Form.Label>Username</Form.Label>
-                    <Form.Control type="text" placeholder="Enter Username" name='username' value={username} onChange={handleUsername}/>
-                </Form.Group>
+    <Form style={{ padding: "10px", "width": "100%" }} onSubmit={handleApi}>
 
-                <Form.Group className="mb-3">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" name='password' value={password} onChange={handlePassword}/>
-                </Form.Group>
-                <Button variant="primary" type="submit">
-                    Submit
-                </Button>
-            </Form>
-    
-    )
+      <Form.Group className="mb-3">
+        <Form.Label>Username</Form.Label>
+        <Form.Control type="text" placeholder="Enter Username" name='username' value={username} onChange={handleUsername} />
+      </Form.Group>
+
+      <Form.Group className="mb-3">
+        <Form.Label>Password</Form.Label>
+        <Form.Control type="password" placeholder="Password" name='password' value={password} onChange={handlePassword} />
+      </Form.Group>
+      <Button variant="primary" type="submit">
+        Submit
+      </Button>
+    </Form>
+
+  )
 }
 
 export default Login;

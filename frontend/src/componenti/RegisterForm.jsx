@@ -3,7 +3,7 @@ import Button from "react-bootstrap/esm/Button";
 import axios from "axios";
 import React from 'react';
 import { useState } from "react";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
   const [username, setUsername] = useState('')
@@ -28,8 +28,8 @@ function Register() {
       email: email,
       password: password
     }).then((result) => {
-      if (result.data.accessToken){
-        localStorage.setItem("user",JSON.stringify(result.data))
+      if (result.data.accessToken) {
+        localStorage.setItem("user", JSON.stringify(result.data))
         navigate("/");
         window.location.reload();
       }
