@@ -21,7 +21,8 @@ router.post("/register", async (req, res) => {
                 expiresIn:"3d",
             }
         );
-        res.status(201).json({savedUser,accessToken});
+        const {password, ...others} = savedUser._doc;
+        res.status(201).json({...others,accessToken});
 
     } catch (err) {
         res.status(500).json(err);
@@ -42,7 +43,7 @@ router.post("/login", async (req, res) => {
         const Originalpassword = hashedPassword.toString(CryptoJS.enc.Utf8);
         Originalpassword !== req.body.password &&
             res.status(401).json("password errata!");
-        const accessToken = jwt.sign(
+        const accessToken = await jwt.sign(
             {
                 email:user.email
             },

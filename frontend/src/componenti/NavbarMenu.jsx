@@ -31,11 +31,16 @@ function NavbarMenu() {
           </Nav.Link>
           <Nav.Link ><Link to='' style={{ textDecoration: 'none', color: 'inherit' }}>Ristoranti</Link></Nav.Link>
           {currentUser ? (
+            <>
             <Nav.Link>
             <Link to='login' style={{ textDecoration: 'none', color: 'inherit' }} onClick={logOut}>
               Logout
             </Link>
           </Nav.Link>
+            <Navbar.Text style={{marginLeft:"30px"}}>
+              <span>Signed in as : {currentUser.username}</span>
+            </Navbar.Text>
+              </>
           ):(<Nav.Link>
             <Link to='login' style={{ textDecoration: 'none', color: 'inherit' }}>
               Login
