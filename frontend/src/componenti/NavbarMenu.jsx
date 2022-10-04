@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { Link } from "react-router-dom";
+import { Outlet, Link, useNavigate, redirect } from "react-router-dom";
 import authService from './servizi';
 
 
 function NavbarMenu() {
+  const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState(undefined);
   useEffect(() => {
     const user = authService.getCurrentUser();
@@ -15,10 +16,12 @@ function NavbarMenu() {
   }, []);
   const logOut = () => {
     authService.logout();
+    window.location.reload();
   };
 
 
   return (
+    <>
     <Navbar bg="dark" variant="dark" expand="lg">
       <Navbar.Brand href="#home" style={{ marginLeft: "10px" }}>FooDelivery</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -34,7 +37,7 @@ function NavbarMenu() {
           {currentUser ? (
             <>
               <Nav.Link>
-                <Link to='/' style={{ textDecoration: 'none', color: 'inherit' }} onClick={logOut}>
+                <Link  style={{ textDecoration: 'none', color: 'inherit' }} onClick={logOut}>
                   Logout
                 </Link>
               </Nav.Link>
@@ -43,7 +46,7 @@ function NavbarMenu() {
               </Navbar.Text>
             </>
           ) : (<Nav.Link>
-            <Link to='login' style={{ textDecoration: 'none', color: 'inherit' }}>
+            <Link to='/login' style={{ textDecoration: 'none', color: 'inherit' }}>
               Login
             </Link>
           </Nav.Link>
@@ -52,6 +55,8 @@ function NavbarMenu() {
         </Nav>
       </Navbar.Collapse>
     </Navbar>
+    <Outlet/>
+    </>
   );
 }
 

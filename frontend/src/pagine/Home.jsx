@@ -5,7 +5,6 @@ import Footer from "../componenti/Footer";
 function Home(){
     return(
         <>
-        <NavbarMenu />
         <Container style={{"display":"flex","justifyContent":"center","height":"80vh","alignItems":"center"}}>
             <WelcomeSearch/>
         </Container>

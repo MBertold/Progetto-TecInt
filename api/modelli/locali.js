@@ -12,8 +12,7 @@ const LocaliSchema = new mongoose.Schema(
         address: {
             type: String,
             required: true,
-        },
-        items: [{ type: Schema.Types.ObjectId, ref: "Prodotti" }],
+        }
     },
     { timestamps: true }
 );

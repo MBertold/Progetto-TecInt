@@ -2,27 +2,13 @@ import React from 'react';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Home from './pagine/Home';
-import LoginPage from './pagine/LoginPage';
-import Ristoranti from './pagine/creaLocale';
+
 import { render } from "react-dom";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-} from "react-router-dom";
+
 // import your route components too
 
 render(
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<App />}>
-        <Route index element={<Home />} />
-      </Route>
-      <Route path='login' element={<LoginPage />} />
-      <Route path='unisciti' element={<Ristoranti />} />
-    </Routes>
-  </BrowserRouter>,
+  <App/>,
   document.getElementById("root")
 );
 
