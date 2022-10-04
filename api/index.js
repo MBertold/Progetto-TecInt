@@ -6,6 +6,7 @@ const mongoose = require("mongoose")
 const dotenv = require("dotenv")
 const userRoute = require("./routes/user")
 const authRoute = require("./routes/auth")
+const shopRoute = require("./routes/locali")
 dotenv.config();
 
 const corsOption = {
@@ -22,4 +23,5 @@ mongoose.connect(
 app.use(express.json());
 app.use("/api/user", userRoute);
 app.use("/api/auth",authRoute);
+app.use("/api/shop",shopRoute);
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

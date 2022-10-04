@@ -1,5 +1,10 @@
 
-
+const getCurrentShop = () =>{
+    return JSON.parse(localStorage.getItem("shop"));
+}
+const shoplogout = () =>{
+    localStorage.removeItem("shop");
+}
 
 
 const getCurrentUser = () =>{
@@ -13,7 +18,9 @@ const logout = () => {
 
 const authService = {
     getCurrentUser,
-    logout
+    logout,
+    getCurrentShop,
+    shoplogout
 };
 
 export default authService;

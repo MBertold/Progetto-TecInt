@@ -1,16 +1,5 @@
 const mongoose = require("mongoose")
 
-
-const addressInfo = {
-    street: String,
-    aptName: String,
-    locality: String,
-    zip: String,
-    lat: Number,
-    lng: Number,
-    phoneNo: Number,
-};
-
 const LocaliSchema = new mongoose.Schema(
     {
         name: { type: String, required: true, unique: true },
@@ -20,18 +9,10 @@ const LocaliSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
-        formattedAddress: {
+        address: {
             type: String,
             required: true,
         },
-        imageUrl: [
-            {
-                type: String,
-                required: true,
-            },
-        ],
-        address: addressInfo,
-        account: { type: Schema.Types.ObjectId, required: true, ref: "User" },
         items: [{ type: Schema.Types.ObjectId, ref: "Prodotti" }],
     },
     { timestamps: true }

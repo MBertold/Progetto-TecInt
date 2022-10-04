@@ -30,6 +30,7 @@ function NavbarMenu() {
             </Link>
           </Nav.Link>
           <Nav.Link ><Link to='' style={{ textDecoration: 'none', color: 'inherit' }}>Ristoranti</Link></Nav.Link>
+          <Nav>
           {currentUser ? (
             <>
               <Nav.Link>
@@ -47,7 +48,7 @@ function NavbarMenu() {
             </Link>
           </Nav.Link>
           )}
-
+          </Nav>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

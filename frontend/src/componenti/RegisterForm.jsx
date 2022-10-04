@@ -22,7 +22,6 @@ function Register() {
   }
 
   const handleApi = () => {
-    console.log({ username, email, password })
     axios.post('http://localhost:5000/api/auth/register', {
       username: username,
       email: email,
