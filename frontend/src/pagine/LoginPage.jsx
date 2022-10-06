@@ -3,9 +3,7 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import Login from '../componenti/LoginForm';
 import Register from '../componenti/RegisterForm';
-import NavbarMenu from '../componenti/NavbarMenu';
-import Footer
-    from '../componenti/Footer';
+import ShopLogin from '../componenti/shopLogin';
 function LoginPage() {
     return (
         <>
@@ -19,6 +17,9 @@ function LoginPage() {
                         </Tab>
                         <Tab eventKey="register" title="Registrati">
                             <Register />
+                        </Tab>
+                        <Tab eventKey="shopLogin" title="Login Titolare">
+                            <ShopLogin/>
                         </Tab>
                     </Tabs>
                 </Container>

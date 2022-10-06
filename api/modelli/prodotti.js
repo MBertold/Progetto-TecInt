@@ -1,31 +1,30 @@
 const mongoose = require("mongoose")
 
+
 const prodottiSchema = new mongoose.Schema(
   {
-    title: {
+    nome: {
       type: String,
       required: true,
     },
-    description: {
+    descrizione: {
       type: String,
       required: true,
     },
-    tags: {
-      type: String,
-    },
+    /*
     imageUrl: {
       type: String,
-      required: true,
+      required: false,
     },
-    price: {
+    */
+    prezzo: {
       type: Number,
       required: true,
     },
-    creator: {
-      type: Schema.Types.ObjectId,
-      ref: "Locale",
-      required: true,
-    },
+    proprietario:{
+      type:String,
+      required:true
+    }
   },
   {
     timestamps: true,

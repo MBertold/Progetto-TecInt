@@ -2,6 +2,7 @@ import NavbarMenu from "../componenti/NavbarMenu";
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
 import Container from "react-bootstrap/esm/Container";
 import axios from "axios";
@@ -14,8 +15,9 @@ function Ristoranti() {
   const [name, setName] = useState('pippo')
   const [email, setEmail] = useState('pippo@pippo.com')
   const [password, setPassword] = useState('pippo')
-  const [tags,setTags] = useState('pippo')
-  const [address,setAddress]= useState('pippo')
+  const [tags, setTags] = useState('pippo')
+  const [address, setAddress] = useState('pippo')
+  const[descrizione,setDescrizione] = useState('ristorante di pippo')
   const navigate = useNavigate();
   const handleName = (e) => {
     setName(e.target.value)
@@ -32,25 +34,29 @@ function Ristoranti() {
   const handleAddress = (e) => {
     setAddress(e.target.value)
   }
+  const handleDescrizione =(e) =>{
+    setDescrizione(e.target.value)
+  }
   const handleApi = (event) => {
     event.preventDefault();
     axios.post('http://localhost:5000/api/shop/shopRegister', {
       name: name,
       email: email,
       password: password,
-      tags:tags,
-      address:address
+      tags: tags,
+      address: address,
+      descrizione:descrizione
     })
-    .then((result) => {
-      console.log(result)
-      if (result.data.accessToken) {
-        localStorage.setItem("shop", JSON.stringify(result.data))
-        navigate("/ristorante");
-      }
-    })
-    .catch(error => {
-      console.log(error)
-    })
+      .then((result) => {
+        console.log(result)
+        if (result.data.accessToken) {
+          localStorage.setItem("shop", JSON.stringify(result.data))
+          navigate("/ristorante");
+        }
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
   return (
     <>
@@ -60,25 +66,31 @@ function Ristoranti() {
           <Row className="mb-3">
             <Form.Group as={Col} controlId="formGridEmail">
               <Form.Label>Email</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" name='username' value={email} onChange={handleEmail}/>
+              <Form.Control type="email" placeholder="Enter email" name='username' value={email} onChange={handleEmail} />
             </Form.Group>
 
             <Form.Group as={Col} controlId="formGridPassword">
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" name='password' value={password} onChange={handlePassword}/>
+              <Form.Control type="password" placeholder="Password" name='password' value={password} onChange={handlePassword} />
             </Form.Group>
           </Row>
           <Form.Group className="mb-3" controlId="formGridName">
             <Form.Label>Nome Locale</Form.Label>
-            <Form.Control type="text" name='name' value={name} onChange={handleName}/>
+            <Form.Control type="text" name='name' value={name} onChange={handleName} />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formGridTags">
             <Form.Label>Tags</Form.Label>
-            <Form.Control type="text" name='tags' value={tags} onChange={handleTags}/>
+            <Form.Control type="text" name='tags' value={tags} onChange={handleTags} />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formGridAddress1">
             <Form.Label>Indirizzo</Form.Label>
-            <Form.Control type="text" name='address' value={address} onChange={handleAddress}/>
+            <Form.Control type="text" name='address' value={address} onChange={handleAddress} />
+          </Form.Group>
+          <Form.Group>
+            <InputGroup>
+              <InputGroup.Text>Descrizione</InputGroup.Text>
+              <Form.Control as="textarea" aria-label="With textarea" name='descrizione' value={descrizione} onChange={handleDescrizione}/>
+            </InputGroup>
           </Form.Group>
           <Button variant="primary" type="submit">
             Submit

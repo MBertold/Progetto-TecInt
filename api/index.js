@@ -7,6 +7,7 @@ const dotenv = require("dotenv")
 const userRoute = require("./routes/user")
 const authRoute = require("./routes/auth")
 const shopRoute = require("./routes/locali")
+const itemRoute = require("./routes/prodotti")
 dotenv.config();
 
 const corsOption = {
@@ -24,4 +25,5 @@ app.use(express.json());
 app.use("/api/user", userRoute);
 app.use("/api/auth",authRoute);
 app.use("/api/shop",shopRoute);
+app.use("/api/item",itemRoute);
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

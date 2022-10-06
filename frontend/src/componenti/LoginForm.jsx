@@ -6,8 +6,8 @@ import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
 function Login() {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+  const [username, setUsername] = useState('marco')
+  const [password, setPassword] = useState('pippons')
   const navigate = useNavigate();
   console.log({ username, password })
   const handleUsername = (e) => {
@@ -18,8 +18,8 @@ function Login() {
     setPassword(e.target.value)
   }
 
-  const handleApi = () => {
-    console.log({ username, password })
+  const handleApi = (event) => {
+    event.preventDefault();
     axios.post('http://localhost:5000/api/auth/login', {
       username: username,
       password: password

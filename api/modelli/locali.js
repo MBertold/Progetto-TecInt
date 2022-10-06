@@ -12,6 +12,10 @@ const LocaliSchema = new mongoose.Schema(
         address: {
             type: String,
             required: true,
+        },
+        descrizione:{
+            type:String,
+            required:true
         }
     },
     { timestamps: true }

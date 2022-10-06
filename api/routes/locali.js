@@ -12,6 +12,7 @@ router.post("/shopRegister", async (req, res) => {
         email: req.body.email,
         tags: req.body.tags,
         address: req.body.address,
+        descrizione:req.body.descrizione,
         password: CryptoJS.AES.encrypt(req.body.password, process.env.PASS_SEC),
 
     });
@@ -19,7 +20,6 @@ router.post("/shopRegister", async (req, res) => {
         const savedShop = await nuovoLocale.save();
         const accessToken = await jwt.sign(
             {
-                name: savedShop.name,
                 email: savedShop.email,
                 password: savedShop.password
             },
@@ -34,14 +34,29 @@ router.post("/shopRegister", async (req, res) => {
         res.status(500).json(err);
     }
 })
-router.get("/:id",async (req, res) => {
+router.post("/shoplogin", async (req, res) => {
     try {
-      const shop = await Locali.findById(req.params.id);
-      const { password, ...others } = shop._doc;
-      res.status(200).json(...others,accessToken);
+        const shop = await Locali.findOne({ email: req.body.email })
+        !shop && res.status(401).json("shop errato!")
+
+        const hashedPassword = CryptoJS.AES.decrypt(shop.password, process.env.PASS_SEC);
+        const Originalpassword = hashedPassword.toString(CryptoJS.enc.Utf8);
+        Originalpassword !== req.body.password &&
+            res.status(401).json("password errata!");
+        const accessToken = await jwt.sign(
+            {
+                email: shop.email,
+                password:shop.password
+            },
+            process.env.JWT_SEC,
+            { expiresIn: "3d" }
+        );
+        const { password, ...others } = shop._doc;
+        res.status(200).json({ ...others, accessToken });
     } catch (err) {
-      res.status(500).json(err);
+        res.status(500).json(err);
     }
-  });
+})
+
 
 module.exports = router
