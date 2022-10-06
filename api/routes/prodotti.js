@@ -31,4 +31,15 @@ router.get("/show/",async(req,res)=>{
         res.status(500).json(err);
       }
 })
+
+
+//DELETE ITEM
+router.delete("/delete/:id", async (req, res) => {
+    try {
+      await Prodotti.findByIdAndDelete(req.params.id);
+      res.status(200).json("User has been deleted...");
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
 module.exports = router

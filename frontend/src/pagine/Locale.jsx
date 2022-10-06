@@ -19,10 +19,11 @@ export default function Locale() {
     }
   }, []);
   useEffect( () => {
+    
     axios.get("http://localhost:5000/api/item/show/", { params: { proprietario: currentShop?._id } })
       .then((res) => {
         setPost(res.data)
-        console.log(res.data)
+       
       })
   })
   
@@ -34,7 +35,6 @@ export default function Locale() {
           <p className="lead text-muted">{currentShop?.tags}</p>
           <p className="lead text-muted">{currentShop?.address}</p>
           <p className="lead text-muted">{currentShop?.descrizione}</p>
-          <p className="lead text-muted">{currentShop?._id}</p>
 
 
         </Row>
@@ -44,8 +44,9 @@ export default function Locale() {
         <Container>
           <Row >     
             {
-            post.map(card => (<ItemCard
+             post?.map( card => (<ItemCard
               key={card._id}
+              id = {card._id}
               nome={card.nome}
               descrizione={card.descrizione}
               prezzo={card.prezzo} />
