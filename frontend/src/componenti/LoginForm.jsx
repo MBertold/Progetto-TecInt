@@ -9,7 +9,6 @@ function Login() {
   const [username, setUsername] = useState('marco')
   const [password, setPassword] = useState('pippons')
   const navigate = useNavigate();
-  console.log({ username, password })
   const handleUsername = (e) => {
     setUsername(e.target.value)
   }
