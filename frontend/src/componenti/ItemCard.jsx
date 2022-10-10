@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { Component } from 'react'
-
+import UpdateModal from './UpdateModal';
+import Button from 'react-bootstrap/esm/Button';
 export default class ItemCard extends Component {
   constructor(props) {
     super(props);
@@ -8,27 +9,18 @@ export default class ItemCard extends Component {
       nome: this.props.nome,
       descrizione: this.props.descrizione,
       prezzo: this.props.prezzo,
-      id : this.props.id
+      id: this.props.id,
+      modalShow : false
     }
   }
-  handleNome = (e) => {
-    this.setState({ nome: e.target.value })
+ 
+  setModalShowTrue = () =>{
+    this.setState({modalShow : true})
   }
-  handleDescrizione = (e) => {
-    this.setState({ descrizione: e.target.value })
-  }
-  handlePrezzo = (e) => {
-    this.setState({ prezzo: e.target.value })
+  setModalShowFalse = () =>{
+    this.setState({modalShow : false})
   }
 
-  handleSubmitPut = event => {
-    event.preventDefault();
-
-
-    axios.put(`http://localhost:5000/api/item/put/${this.props.id}`, {
-
-    })
-  }
   handleSubmitDelete = event => {
     event.preventDefault();
 
@@ -47,24 +39,18 @@ export default class ItemCard extends Component {
               <form onSubmit={this.handleSubmitDelete}>
                 <button className='btn btn-outline-danger' >Elimina</button>
               </form>
-              <button className="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Modifica</button>
-            </div>
-          </div>
-        </div>
-        <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div className="modal-body">
-                ...
-              </div>
-              <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" className="btn btn-primary">Save changes</button>
-              </div>
+              <Button variant="primary" onClick={()=> this.setModalShowTrue()}>
+                Modifica
+              </Button>
+
+              <UpdateModal
+                show={this.state.modalShow}
+                id={this.state.id}
+                nome={this.state.nome}
+                descrizione={this.state.descrizione}
+                prezzo={this.state.prezzo}
+                onHide={() => this.setModalShowFalse()}
+              />
             </div>
           </div>
         </div>
