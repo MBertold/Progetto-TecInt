@@ -5,27 +5,25 @@ import { useEffect, useState } from 'react';
 import React from 'react'
 import axios from "axios";
 import ShopCard from "../componenti/ShopCard";
-
+import ElencoTag from "../componenti/ElencoTag";
+import Button from "react-bootstrap/esm/Button";
 function ElencoRistoranti() {
     const [post, setPost] = useState();
-
-
-
-
     useEffect(() => {
-
         axios.get("http://localhost:5000/api/shop/show")
             .then((res) => {
                 setPost(res.data)
-
             })
     })
     return (
         <Container>
-            <Container className='py-5 text-center'>
+            <Container >
                 <Row>
                     <Form>
-
+                        <ElencoTag />
+                        <Button>
+                            Cerca
+                        </Button>
                     </Form>
                 </Row>
             </Container>
@@ -33,7 +31,7 @@ function ElencoRistoranti() {
                 <Container>
                     <Row>
                         {
-                            post?.map(card => (<ShopCard 
+                            post?.map(card => (<ShopCard
                                 key={card._id}
                                 id={card._id}
                                 nome={card.nome}
@@ -45,7 +43,6 @@ function ElencoRistoranti() {
                         }
                     </Row>
                 </Container>
-
             </Container>
         </Container>
     )
