@@ -34,6 +34,7 @@ router.post("/shopRegister", async (req, res) => {
         res.status(500).json(err);
     }
 })
+//LOGIN
 router.post("/shoplogin", async (req, res) => {
     try {
         const shop = await Locali.findOne({ email: req.body.email })
@@ -57,6 +58,14 @@ router.post("/shoplogin", async (req, res) => {
         res.status(500).json(err);
     }
 })
-
+//SHOW RESTURANT
+router.get("/show", async (req,res)=>{
+try{
+    const shops = await Locali.find();
+    res.status(201).json(shops)
+}catch (err){
+    res.status(500).json(err)
+}
+})
 
 module.exports = router

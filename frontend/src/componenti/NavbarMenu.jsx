@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { Outlet, Link, useNavigate, redirect } from "react-router-dom";
+import { Outlet, Link} from "react-router-dom";
 import authService from './servizi';
 
 
 function NavbarMenu() {
-  const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState(undefined);
   useEffect(() => {
     const user = authService.getCurrentUser();
@@ -32,7 +31,7 @@ function NavbarMenu() {
               Home
             </Link>
           </Nav.Link>
-          <Nav.Link ><Link to='' style={{ textDecoration: 'none', color: 'inherit' }}>Ristoranti</Link></Nav.Link>
+          <Nav.Link ><Link to='/ristoranti' style={{ textDecoration: 'none', color: 'inherit' }}>Ristoranti</Link></Nav.Link>
           <Nav>
           {currentUser ? (
             <>

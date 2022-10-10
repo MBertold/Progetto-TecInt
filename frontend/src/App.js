@@ -11,6 +11,7 @@ import {
 import NavbarMenu from './componenti/NavbarMenu';
 import LocaleNavbar from './componenti/LocaleNavbar';
 import Locale from './pagine/Locale';
+import ElencoRistoranti from './pagine/ElencoRistoranti';
 function App() {
   return (
     <BrowserRouter>
@@ -18,6 +19,7 @@ function App() {
         <Route path="/" element={<NavbarMenu />}>
           <Route index element={<Home />} />
           <Route exact path='/login' element={<LoginPage />} />
+          <Route exact path='/ristoranti' element={<ElencoRistoranti/>}/>
         </Route>
         <Route exact path='/unisciti' element={<Ristoranti />} />
         <Route exact path='/ristorante' element={<LocaleNavbar/>}>
