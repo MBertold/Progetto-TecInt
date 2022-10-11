@@ -1,6 +1,5 @@
-import axios from 'axios';
 import React, { Component } from 'react'
-import Button from 'react-bootstrap/esm/Button';
+import AddCart from './AddCart';
 export default class ProductCard extends Component {
   constructor(props) {
     super(props);
@@ -11,12 +10,6 @@ export default class ProductCard extends Component {
       id: this.props.id,
     }
   }
- 
-
-
-  handleSubmitDelete = event => {
-    event.preventDefault();
-  }
   render() {
     return (
       <>
@@ -26,9 +19,7 @@ export default class ProductCard extends Component {
               <h5 className='card-title'>{this.state.nome}</h5>
               <p className='card-text'>{this.state.descrizione}</p>
               <p className='card-text'>{this.state.prezzo}</p>
-              <Button variant="primary">
-                Acquista
-              </Button>
+              <AddCart/>
             </div>
           </div>
         </div>

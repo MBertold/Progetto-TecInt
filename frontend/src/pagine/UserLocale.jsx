@@ -13,7 +13,7 @@ export default function UserLocale(props) {
 
   useEffect(() => {
 
-    axios.get("http://localhost:5000/api/item/show/", { params: { proprietario: location.state.id } })
+    axios.get("http://localhost:5000/api/item/show/", { params: { proprietario: location.state?.id } })
       .then((res) => {
         setPost(res.data)
 
@@ -24,10 +24,10 @@ export default function UserLocale(props) {
     <Container>
       <Container className='py-5 text-center'>
         <Row className='py-lg-5'>
-          <h1 className="fw-light">{location.state.name}</h1>
-          <p className="lead text-muted">{location.state.tags}</p>
-          <p className="lead text-muted">{location.state.address}</p>
-          <p className="lead text-muted">{location.state.descrizione}</p>
+          <h1 className="fw-light">{location.state?.name}</h1>
+          <p className="lead text-muted">{location.state?.tags}</p>
+          <p className="lead text-muted">{location.state?.address}</p>
+          <p className="lead text-muted">{location.state?.descrizione}</p>
 
 
         </Row>

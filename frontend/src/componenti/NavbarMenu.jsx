@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { Outlet, Link} from "react-router-dom";
+import { Outlet, Link, useNavigate} from "react-router-dom";
 import authService from './servizi';
-
 
 function NavbarMenu() {
   const [currentUser, setCurrentUser] = useState(undefined);
+  const navigate = useNavigate();
   useEffect(() => {
     const user = authService.getCurrentUser();
     if (user) {
@@ -14,8 +14,11 @@ function NavbarMenu() {
     }
   }, []);
   const logOut = () => {
+    
     authService.logout();
+    navigate('/')
     window.location.reload();
+    
   };
 
 
