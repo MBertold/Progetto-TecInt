@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import ShopButton from './ShopButton';
 class ShopCard extends Component {
   constructor(props) {
     super(props);
@@ -11,10 +11,6 @@ class ShopCard extends Component {
       id: this.props.id
     }
   }
-  handleShop = event =>{
-    event.preventDefault();
-
-  }
   render() {
     return (
       <div className='col'>
@@ -24,9 +20,13 @@ class ShopCard extends Component {
             <p className='card-text'>{this.state.tags}</p>
             <p className='card-text'>{this.state.address}</p>
             <p className='card-text'>{this.state.descrizione}</p>
-            <form>
-              <button className='btn btn-primary' >Entra</button>
-            </form>
+              <ShopButton
+              id={this.state.id}
+              nome={this.state.nome}
+              tags={this.state.tags}
+              address={this.state.address}
+              descrizione={this.state.descrizione}
+              />
           </div>
         </div>
       </div>

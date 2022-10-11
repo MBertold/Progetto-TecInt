@@ -67,5 +67,13 @@ try{
     res.status(500).json(err)
 }
 })
+//SHOW SELECTED RESTURANT
+router.get("/showone",async(req,res)=>{
+    try{
+     const shop =  await Locali.findById(req.params.id)
+     
+    }catch(err){
 
+    }
+})
 module.exports = router
