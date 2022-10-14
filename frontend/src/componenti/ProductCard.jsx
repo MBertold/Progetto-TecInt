@@ -19,7 +19,11 @@ export default class ProductCard extends Component {
               <h5 className='card-title'>{this.state.nome}</h5>
               <p className='card-text'>{this.state.descrizione}</p>
               <p className='card-text'>{this.state.prezzo}</p>
-              <AddCart/>
+              <AddCart
+              id = {this.state.id}
+              nome ={this.state.nome}
+              prezzo ={this.state.prezzo}
+               />
             </div>
           </div>
         </div>

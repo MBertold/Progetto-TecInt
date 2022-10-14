@@ -19,7 +19,7 @@ function ElencoRistoranti() {
         <Container>
             <Container >
                 <Row>
-                    <Form>
+                    <Form style={{margin:"40px"}}>
                         <ElencoTag />
                         <Button>
                             Cerca

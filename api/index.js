@@ -8,6 +8,7 @@ const userRoute = require("./routes/user")
 const authRoute = require("./routes/auth")
 const shopRoute = require("./routes/locali")
 const itemRoute = require("./routes/prodotti")
+const cartRoute = require("./routes/carrello")
 dotenv.config();
 
 const corsOption = {
@@ -26,4 +27,5 @@ app.use("/api/user", userRoute);
 app.use("/api/auth",authRoute);
 app.use("/api/shop",shopRoute);
 app.use("/api/item",itemRoute);
+app.use("/api/cart",cartRoute);
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
