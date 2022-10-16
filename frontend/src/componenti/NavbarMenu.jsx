@@ -30,14 +30,17 @@ function NavbarMenu() {
     window.location.reload();
 
   };
-  useEffect(() => {
 
+
+  const handleCart = (e) =>{
+    e.preventDefault();
+    handleShow();
     axios.get("http://localhost:5000/api/cart/show/", { params: { username: currentUser?.username } })
       .then((res) => {
         setPost(res.data)
 
       })
-  })
+  }
 
   return (
     <>
@@ -66,7 +69,7 @@ function NavbarMenu() {
                     <span>Signed in as : {currentUser.username}</span>
                   </Navbar.Text>
 
-                  <Button onClick={handleShow}>
+                  <Button onClick={handleCart}>
                     Carrello
                   </Button>
                 </Nav>

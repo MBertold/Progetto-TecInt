@@ -15,7 +15,7 @@ export default function AddCart(props) {
  const handleAdd = (e) =>{
     e.preventDefault();
     currentUser ? (
-      axios.post('http://localhost:5000/api/cart/add/',{
+      axios.put('http://localhost:5000/api/cart/add/',{
         username : currentUser.username,
         productId : props.id,
         productName: props.nome,
