@@ -30,16 +30,18 @@ function NavbarMenu() {
     window.location.reload();
 
   };
-
-
-  const handleCart = (e) =>{
-    e.preventDefault();
-    handleShow();
+  useEffect(() => {
     axios.get("http://localhost:5000/api/cart/show/", { params: { username: currentUser?.username } })
       .then((res) => {
         setPost(res.data)
 
       })
+  })
+
+  const handleCart = (e) => {
+    e.preventDefault();
+    handleShow();
+
   }
 
   return (
@@ -90,21 +92,21 @@ function NavbarMenu() {
       <Offcanvas show={show} onHide={handleClose} placement={'end'}>
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Carrello</Offcanvas.Title>
-          
+
         </Offcanvas.Header>
         <Offcanvas.Body>
-        <Container style={{display:'flex',flexDirection:'column'}}>
-              {
-                post?.map(item =>(<CartItem 
-                  key={item?._id}
-                  id={item?.productId}
-                  nome={item?.productName}
-                  prezzo={item?.productPrice}
-                />
+          <Container style={{ display: 'flex', flexDirection: 'column' }}>
+            {
+              post?.map(item => (<CartItem
+                key={item?._id}
+                id={item?.productId}
+                nome={item?.productName}
+                prezzo={item?.productPrice}
+              />
 
-                ))
-              }
-              </Container>
+              ))
+            }
+          </Container>
         </Offcanvas.Body>
       </Offcanvas>
     </>

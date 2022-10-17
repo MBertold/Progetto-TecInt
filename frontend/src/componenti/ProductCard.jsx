@@ -22,7 +22,7 @@ export default class ProductCard extends Component {
               <AddCart
               id = {this.state.id}
               nome ={this.state.nome}
-              prezzo ={this.state.prezzo}
+              prezzo={this.state.prezzo}
                />
             </div>
           </div>

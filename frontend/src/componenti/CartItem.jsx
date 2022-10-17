@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import DeleteItem from './DeleteItem';
 
 class CartItem extends Component {
     constructor(props) {
@@ -16,7 +17,9 @@ class CartItem extends Component {
                     <h5>{this.state.nome}</h5>
                     <p>{this.state.prezzo}</p>
                 </div>
-                <button className='btn btn-danger'>Elimina</button>
+                <DeleteItem
+                id = {this.state.id}
+                />
             </div>
         );
     }

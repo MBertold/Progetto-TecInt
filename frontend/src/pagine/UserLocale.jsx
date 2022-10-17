@@ -18,7 +18,7 @@ export default function UserLocale(props) {
         setPost(res.data)
 
       })
-  })
+  },[])
 
   return (
     <Container>
