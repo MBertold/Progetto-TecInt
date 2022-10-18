@@ -18,7 +18,8 @@ export default function AddCart(props) {
       axios.post(`http://localhost:5000/api/cart/add/${currentUser.username}`,{
         productId : props.id,
         productName : props.nome,
-        productPrice : props.prezzo
+        productPrice : props.prezzo,
+        productOwner : props.proprietario
       })
       
       ) : (alert("not logged"));

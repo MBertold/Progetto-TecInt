@@ -8,6 +8,7 @@ export default class ProductCard extends Component {
       descrizione: this.props.descrizione,
       prezzo: this.props.prezzo,
       id: this.props.id,
+      proprietario : this.props.proprietario
     }
   }
   render() {
@@ -23,6 +24,7 @@ export default class ProductCard extends Component {
               id = {this.state.id}
               nome ={this.state.nome}
               prezzo={this.state.prezzo}
+              proprietario ={this.state.proprietario}
                />
             </div>
           </div>

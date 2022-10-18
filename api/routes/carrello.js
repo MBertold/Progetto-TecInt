@@ -21,37 +21,54 @@ router.post("/add/:username", async (req, res) => {
       req.params.username,
       {
         $push: {
-          cart:{
-            productId : req.body.productId,
-            productName : req.body.productName,
-            productPrice : req.body.productPrice
-          } 
+          cart: {
+            productId: req.body.productId,
+            productName: req.body.productName,
+            productPrice: req.body.productPrice,
+            productOwner : req.body.productOwner
+          }
         }
       })
-      res.send();
-  } catch (err){
-    console.error(err.message);
-    res.send(400).send('Server Error');  }
-  
+    res.send();
+  } catch (err) {
+    res.status(400).json(err);
+  }
+
 
 })
 //DELETE ITEM
-router.put("/delete/:username",async(req,res)=>{
-  
-  try{
+router.put("/delete/:username", async (req, res) => {
+
+  try {
     await User.findOneAndUpdate(
       req.params.username,
       {
         "$pull": {
           "cart": {
-            "productId" : req.body.productId
+            "productId": req.body.productId
           }
         }
       })
-      res.send();
-  } catch (err){
-    console.error(err.message);
-    res.send(400).send('Server Error');
+    res.send();
+  } catch (err) {
+    res.status(400).json(err);
+  }
+})
+
+
+//CALCOLO TOTALE 
+router.get("/total/", async (req, res) => {
+  try {
+    var total = 0;
+    var queryf = { username: req.query.username }
+    const user = await User.findOne(queryf)
+    for (let i = 0, l = user.cart.length; i < l; i++) {
+      total += user.cart[i].productPrice;
+    }
+    
+    res.status(200).json(total.toFixed(2))
+  } catch (err) {
+    res.status(400).json(err);
   }
 })
 module.exports = router

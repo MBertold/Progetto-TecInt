@@ -8,6 +8,9 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import CartItem from './CartItem';
 import axios from 'axios';
 import Container from "react-bootstrap/esm/Container";
+import Row from 'react-bootstrap/esm/Row';
+import OrderButton from './OrderButton';
+
 
 function NavbarMenu() {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -16,6 +19,7 @@ function NavbarMenu() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [post, setPost] = useState();
+  const [total,setTotal] = useState()
 
   useEffect(() => {
     const user = authService.getCurrentUser();
@@ -36,8 +40,11 @@ function NavbarMenu() {
         setPost(res.data)
 
       })
+      
   })
-
+  useEffect(()=>{
+    axios.get(`http://localhost:5000/api/cart/total/`, { params: { username: currentUser?.username } }).then((res)=>{setTotal(res.data)})
+  })
   const handleCart = (e) => {
     e.preventDefault();
     handleShow();
@@ -89,13 +96,13 @@ function NavbarMenu() {
         </Navbar.Collapse>
       </Navbar>
       <Outlet />
-      <Offcanvas show={show} onHide={handleClose} placement={'end'}>
-        <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Carrello</Offcanvas.Title>
+      <Offcanvas show={show} onHide={handleClose} placement={'end'} style={{height:"100%"}}>
+        <Offcanvas.Header closeButton style={{height:"10%"}}>
+          <Offcanvas.Title >Carrello</Offcanvas.Title>
 
         </Offcanvas.Header>
-        <Offcanvas.Body>
-          <Container style={{ display: 'flex', flexDirection: 'column' }}>
+        <Offcanvas.Body style={{height:"90%"}}>
+          <Container style={{ display: 'flex', flexDirection: 'column' ,maxHeight:"50%",overflow:"auto"}}>
             {
               post?.map(item => (<CartItem
                 key={item?._id}
@@ -106,6 +113,17 @@ function NavbarMenu() {
 
               ))
             }
+          </Container>
+          <Container style={{"position":"fixed"}}>
+            <Container style={{marginTop:"20px"}}>
+              <h4>Totale : {total}</h4>
+            </Container>
+            <Container>
+             <OrderButton
+             post ={post} 
+             total={total}
+             />
+            </Container>
           </Container>
         </Offcanvas.Body>
       </Offcanvas>

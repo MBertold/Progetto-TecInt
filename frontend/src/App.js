@@ -13,6 +13,8 @@ import LocaleNavbar from './componenti/LocaleNavbar';
 import Locale from './pagine/Locale';
 import ElencoRistoranti from './pagine/ElencoRistoranti';
 import UserLocale from './pagine/UserLocale';
+import Acquisto from './pagine/Acquisto';
+import Ordini from './pagine/Ordini';
 function App() {
   return (
     <BrowserRouter>
@@ -22,12 +24,12 @@ function App() {
           <Route exact path='/login' element={<LoginPage />} />
           <Route exact path='/ristoranti' element={<ElencoRistoranti/>}/>
           <Route path='/ristoranti/locale'element={<UserLocale/>}/>
-            
         </Route>
+        <Route path='/ordine' element={<Acquisto/>}/>
         <Route exact path='/unisciti' element={<Ristoranti />} />
         <Route exact path='/ristorante' element={<LocaleNavbar/>}>
           <Route index element={<Locale/>}/>
-
+          <Route path='/ristorante/ordini' element={<Ordini/>}/>
         </Route>
       </Routes>
     </BrowserRouter>

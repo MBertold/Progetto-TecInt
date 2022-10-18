@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema(
         email: { type: String, required: true, unique: true },
         password: { type: String, required: true },
         isLogged: { type: Boolean, default: false },
-        cart: [{productId : String, productName : String, productPrice : Number}]
+        cart: [{productId : String, productName : String, productPrice : Number, productOwner : String}]
     },
     { timestamps: true }
 );
