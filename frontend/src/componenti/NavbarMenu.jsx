@@ -105,10 +105,10 @@ function NavbarMenu() {
           <Container style={{ display: 'flex', flexDirection: 'column' ,maxHeight:"50%",overflow:"auto"}}>
             {
               post?.map(item => (<CartItem
-                key={item?._id}
-                id={item?.productId}
-                nome={item?.productName}
-                prezzo={item?.productPrice}
+                key={item?.item._id}
+                id={item?.item._id}
+                nome={item?.item.nome}
+                prezzo={item?.item.prezzo}
               />
 
               ))

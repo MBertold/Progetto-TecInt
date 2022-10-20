@@ -14,12 +14,12 @@ export default function AddCart(props) {
 
  const handleAdd = (e) =>{
     e.preventDefault();
+    console.warn(props.proprietario)
     currentUser ? (
+      
       axios.post(`http://localhost:5000/api/cart/add/${currentUser.username}`,{
-        productId : props.id,
-        productName : props.nome,
-        productPrice : props.prezzo,
-        productOwner : props.proprietario
+        id : props.id,
+        proprietario: props.proprietario
       })
       
       ) : (alert("not logged"));

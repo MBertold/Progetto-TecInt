@@ -15,9 +15,7 @@ export default function DeleteItem(props) {
         e.preventDefault();
         console.warn(props.id)
         axios.put(`http://localhost:5000/api/cart/delete/${currentUser.username}`, {
-            productId: props.id,
-            productName: props.nome,
-            productPrice: props.prezzo
+            id: props.id,
         })
     }
     return (

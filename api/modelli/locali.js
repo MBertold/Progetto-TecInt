@@ -9,7 +9,7 @@ const LocaliSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
-        address: {
+       address: {
             type: String,
             required: true,
         },
@@ -17,7 +17,7 @@ const LocaliSchema = new mongoose.Schema(
             type:String,
             required:true
         },
-        ordini : [{prodotti : Array, totale : Number, indirizzoCliente : String}]
+        ordini : [{prodotti : Array, totale : Number, datiCliente : Array}]
     },
     { timestamps: true }
 );

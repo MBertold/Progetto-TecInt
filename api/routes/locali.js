@@ -76,4 +76,12 @@ router.get("/showone",async(req,res)=>{
 
     }
 })
+//ADD ORDER
+router.post("/addorder",async(req,res)=>{
+    try {
+        
+    } catch (error) {
+        
+    }
+})
 module.exports = router

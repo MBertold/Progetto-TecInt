@@ -10,7 +10,9 @@ export default class ProductCard extends Component {
       id: this.props.id,
       proprietario : this.props.proprietario
     }
+    
   }
+  
   render() {
     return (
       <>

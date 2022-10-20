@@ -18,6 +18,7 @@ export default function UserLocale(props) {
         setPost(res.data)
 
       })
+      console.warn(post)
   },[])
 
   return (
@@ -42,7 +43,8 @@ export default function UserLocale(props) {
                   id={card._id}
                   nome={card.nome}
                   descrizione={card.descrizione}
-                  prezzo={card.prezzo} />
+                  prezzo={card.prezzo} 
+                  proprietario={card.proprietario}/>
                 ))
               }
           </Row>

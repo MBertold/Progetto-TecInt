@@ -1,20 +1,31 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Container from 'react-bootstrap/esm/Container'
 import { useLocation } from 'react-router-dom'
 import Form from 'react-bootstrap/Form';
+import authService from '../componenti/servizi';
 import { PaymentInputsWrapper, usePaymentInputs } from 'react-payment-inputs';
 import images from 'react-payment-inputs/images';
+import axios from 'axios';
 export default function Acquisto() {
     const location = useLocation()
+    const [currentUser, setCurrentUser] = useState(undefined);
     const [cardNumber, setCardNumber] = useState()
     const [cardED, setCardED] = useState()
     const [cardCVC, setCardCVC] = useState()
+    useEffect(() => {
+        const user = authService.getCurrentUser();
+        if (user) {
+          setCurrentUser(user);
+        }
+      }, []);
+      
     const {
         wrapperProps,
         getCardImageProps,
         getCardNumberProps,
         getExpiryDateProps,
-        getCVCProps
+        getCVCProps,
+        meta
     } = usePaymentInputs();
     const handleCardNumber = (e) => {
         e.preventDefault();
@@ -33,13 +44,21 @@ export default function Acquisto() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.warn(cardNumber,cardED,cardCVC)
+        if (meta.error===undefined){
+            console.warn(cardNumber,cardED,cardCVC)
+            axios.post("http://localhost:5000/api/shop/addorder",{
+              
+            })
+
+
+        }
     }
     return (
         <Container style={{ "width": "100%", "height": "100%", "display": "flex", "flexDirection": "row", margin: "0", "justifyContent": "space-around", "alignItems": "center", "marginTop": "20vh" }}>
             <Container style={{ "border": "1px solid black", "width": "auto", "marginLeft": "5vw" }}>
                 <Container>
                     <h2>Riepilogo ordine</h2>
+                    <p>Totale : {location.state.total}</p>
                 </Container>
                 <br />
 
@@ -47,8 +66,8 @@ export default function Acquisto() {
                     {
                         location.state.cart?.map(item => (
                             <Container style={{ "width": "10vw", "margin": "10px" }}>
-                                <h4>{item?.productName}</h4>
-                                <p>{item?.productPrice}</p>
+                                <h4>{item?.nome}</h4>
+                                <p>{item?.prezzo}</p>
                             </Container>
 
                         ))
@@ -61,10 +80,6 @@ export default function Acquisto() {
 
             <Container style={{ "width": "30vw" }} >
                 <Form onSubmit={handleSubmit}>
-                    <Form.Group className="mb-3" controlId="formGridAddress1">
-                        <Form.Label>Indirizzo di fatturazione</Form.Label>
-                        <Form.Control placeholder="1234 Main St" />
-                    </Form.Group>
                     <h3>Inserisci i dati di pagamento</h3>
                     <Container>
                         <PaymentInputsWrapper {...wrapperProps}>
