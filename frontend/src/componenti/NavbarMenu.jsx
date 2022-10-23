@@ -70,6 +70,11 @@ function NavbarMenu() {
               <>
                 <Nav >
                   <Nav.Link>
+                    <Link to='/ordini'style={{ textDecoration: 'none', color: 'inherit' }}>
+                      Ordini
+                    </Link>
+                  </Nav.Link>
+                  <Nav.Link>
                     <Link style={{ textDecoration: 'none', color: 'inherit' }} onClick={logOut}>
                       Logout
                     </Link>

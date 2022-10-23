@@ -5,7 +5,7 @@ const Prodotti = require("../modelli/prodotti")
 //mostar  CARRELLO
 router.get("/show/", async (req, res) => {
   try {
-    var queryf = { username: req.query.username }
+    var queryf = { username: req.query?.username }
     const user = await User.findOne(queryf)
     res.status(200).json(user.cart);
 
@@ -19,20 +19,20 @@ router.post("/add/:username", async (req, res) => {
   try {
     const item = await Prodotti.findById(req.body.id)
     await User.findOneAndUpdate(
-      req.params.username,
-      
+      req.params?.username,
+
       {
         $push: {
-          cart : {
+          cart: {
             shop: req.body.proprietario,
-            item : item
+            item: item
           }
 
         }
       })
     res.send();
   } catch (err) {
-    res.status(400).json(err);
+    res.status(500).json(err);
   }
 
 
@@ -47,8 +47,10 @@ router.put("/delete/:username", async (req, res) => {
       {
         "$pull": {
           "cart":
-            item
-
+          {
+            item : item
+          }
+            
         }
       })
     res.send();

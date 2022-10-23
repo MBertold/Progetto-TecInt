@@ -15,6 +15,7 @@ import ElencoRistoranti from './pagine/ElencoRistoranti';
 import UserLocale from './pagine/UserLocale';
 import Acquisto from './pagine/Acquisto';
 import Ordini from './pagine/Ordini';
+import OrdiniUtente from './pagine/OrdiniUtente';
 function App() {
   return (
     <BrowserRouter>
@@ -24,6 +25,7 @@ function App() {
           <Route exact path='/login' element={<LoginPage />} />
           <Route exact path='/ristoranti' element={<ElencoRistoranti/>}/>
           <Route path='/ristoranti/locale'element={<UserLocale/>}/>
+          <Route path='/ordini' element={<OrdiniUtente/>}/>
         </Route>
         <Route path='/ordine' element={<Acquisto/>}/>
         <Route exact path='/unisciti' element={<Ristoranti />} />

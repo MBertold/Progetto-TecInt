@@ -15,10 +15,10 @@ export default function Acquisto() {
     useEffect(() => {
         const user = authService.getCurrentUser();
         if (user) {
-          setCurrentUser(user);
+            setCurrentUser(user);
         }
-      }, []);
-      
+    }, []);
+
     const {
         wrapperProps,
         getCardImageProps,
@@ -44,10 +44,14 @@ export default function Acquisto() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (meta.error===undefined){
-            console.warn(cardNumber,cardED,cardCVC)
-            axios.post("http://localhost:5000/api/shop/addorder",{
-              
+        if (meta.error === undefined) {
+            axios.post("http://localhost:5000/api/order/add", {
+                cart: location.state.cart,
+
+                nomeUtente: currentUser.username,
+                ncard: cardNumber
+
+
             })
 
 
@@ -66,8 +70,8 @@ export default function Acquisto() {
                     {
                         location.state.cart?.map(item => (
                             <Container style={{ "width": "10vw", "margin": "10px" }}>
-                                <h4>{item?.nome}</h4>
-                                <p>{item?.prezzo}</p>
+                                <h4>{item.item?.nome}</h4>
+                                <p>{item.item?.prezzo}</p>
                             </Container>
 
                         ))

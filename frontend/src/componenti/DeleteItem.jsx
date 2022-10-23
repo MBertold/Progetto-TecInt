@@ -12,9 +12,9 @@ export default function DeleteItem(props) {
         }
     }, []);
     const handleDelete = (e) => {
-        e.preventDefault();
         console.warn(props.id)
-        axios.put(`http://localhost:5000/api/cart/delete/${currentUser.username}`, {
+        e.preventDefault();
+        axios.put(`http://localhost:5000/api/cart/delete/${currentUser?.username}`, {
             id: props.id,
         })
     }

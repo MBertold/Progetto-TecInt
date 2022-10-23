@@ -16,8 +16,8 @@ const LocaliSchema = new mongoose.Schema(
         descrizione:{
             type:String,
             required:true
-        },
-        ordini : [{prodotti : Array, totale : Number, datiCliente : Array}]
+        }
+        
     },
     { timestamps: true }
 );
