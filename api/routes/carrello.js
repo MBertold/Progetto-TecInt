@@ -24,7 +24,6 @@ router.post("/add/:username", async (req, res) => {
       {
         $push: {
           cart: {
-            shop: req.body.proprietario,
             item: item
           }
 

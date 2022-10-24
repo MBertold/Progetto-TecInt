@@ -18,8 +18,7 @@ export default function UserLocale(props) {
         setPost(res.data)
 
       })
-      console.warn(post)
-  },[])
+  })
 
   return (
     <Container>

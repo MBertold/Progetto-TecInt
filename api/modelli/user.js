@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema(
         password: { type: String, required: true },
         isLogged: { type: Boolean, default: false },
         address : {type: String,required:true},
-        cart: [{shop :{type : String}, item : Object }]
+        cart: [{ item : Object }]
     },
     { timestamps: true }
 );

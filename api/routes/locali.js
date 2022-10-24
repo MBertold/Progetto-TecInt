@@ -76,12 +76,14 @@ router.get("/showone",async(req,res)=>{
 
     }
 })
-//ADD ORDER
-router.post("/addorder",async(req,res)=>{
+//GET NAME BY ID 
+router.get("/getname",async(req,res)=>{
     try {
-        
+        console.log(req.params.id)
+        const locale = await Locali.findById(req.params.id)
+        res.status(200).json(locale)
     } catch (error) {
-        
+        res.status(500).json(error)
     }
 })
 module.exports = router
