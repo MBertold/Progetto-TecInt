@@ -3,20 +3,22 @@ import Container from 'react-bootstrap/esm/Container'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import authService from '../componenti/servizi';
-import SchedaOrdine from '../componenti/SchedaOrdine';
+import SchedaOrdineShop from '../componenti/SchedaOrdineShop';
 import Row from 'react-bootstrap/esm/Row';
 
-export default function Ordini() {
-  const [post, setPost] = useState();
+
+export default function OrdiniUtente() {
   const [currentShop, setCurrentShop] = useState(undefined);
-    useEffect(() => {
-        const shop = authService.getCurrentShop();
-        if (shop) {
-            setCurrentShop(shop);
-        }
-    }, []);
+  const [post, setPost] = useState();
+
   useEffect(() => {
-    axios.get("http://localhost:5000/api/order/showuser", { params: { username: currentShop?._id } })
+    const shop = authService.getCurrentShop();
+    if (shop) {
+      setCurrentShop(shop);
+    }
+  }, []);
+  useEffect(() => {
+    axios.get("http://localhost:5000/api/order/showshop", { params: { id: currentShop?._id } })
       .then((res) => {
         setPost(res.data)
 
@@ -26,11 +28,12 @@ export default function Ordini() {
 
 
   return (
-    <Container >
+    <Container style={{"marginTop":"10vh"}}>
       <Row>
         {
-          post?.map(card => <SchedaOrdine
+          post?.map(card => <SchedaOrdineShop
             key={card._id}
+            cliente ={card.nomeUtente}
             items={card.items}
             titolo={[card.giorno, card.mese, card.anno]}
           />)
@@ -39,4 +42,3 @@ export default function Ordini() {
     </Container>
   )
 }
-

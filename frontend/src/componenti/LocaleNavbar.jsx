@@ -28,7 +28,12 @@ export default function LocaleNavbar() {
                             <Navbar.Text>
                                 {currentShop?.name}
                             </Navbar.Text>
-                            <Nav.Link>Ordini</Nav.Link>
+                            <Nav.Link>
+                                <Link to='/ristorante/ordini' style={{ textDecoration: 'none', color: 'inherit' }}>
+                                    Ordini
+                                </Link>
+
+                            </Nav.Link>
                         </Nav>
                         <Nav>
                             <Nav.Link>

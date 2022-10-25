@@ -57,5 +57,13 @@ router.get("/showuser", async (req, res) => {
         res.status(500).json(error);
     }
 })
-
+router.get("/showshop",async(req,res)=>{
+    try {
+        var query = {idLocale : req.query.id};
+        const ordini = await Ordine.find(query);
+        res.status(200).json(ordini)
+    } catch (error) {
+        res.status(500).json(error)
+    }
+})
 module.exports = router
