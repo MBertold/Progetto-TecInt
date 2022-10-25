@@ -9,15 +9,16 @@ import axios from "axios";
 import React from 'react';
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ElencoTag from "../componenti/ElencoTag";
 
 
 function Ristoranti() {
-  const [name, setName] = useState('pippo')
-  const [email, setEmail] = useState('pippo@pippo.com')
-  const [password, setPassword] = useState('pippo')
-  const [tags, setTags] = useState('pippo')
-  const [address, setAddress] = useState('pippo')
-  const[descrizione,setDescrizione] = useState('ristorante di pippo')
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [tags, setTags] = useState('')
+  const [address, setAddress] = useState('')
+  const[descrizione,setDescrizione] = useState('')
   const navigate = useNavigate();
   const handleName = (e) => {
     setName(e.target.value)
@@ -80,7 +81,7 @@ function Ristoranti() {
           </Form.Group>
           <Form.Group className="mb-3" controlId="formGridTags">
             <Form.Label>Tags</Form.Label>
-            <Form.Control type="text" name='tags' value={tags} onChange={handleTags} />
+            <ElencoTag onChange={handleTags}/>
           </Form.Group>
           <Form.Group className="mb-3" controlId="formGridAddress1">
             <Form.Label>Indirizzo</Form.Label>

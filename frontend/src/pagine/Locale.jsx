@@ -40,15 +40,16 @@ export default function Locale() {
   const handlePrezzo = (e) => {
     setPrezzo(e.target.value)
   }
-  const handleSubmit = (event) =>{
+  const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post('http://localhost:5000/api/item/add/',{
+    axios.post('http://localhost:5000/api/item/add/', {
       nome: nome,
-      descrizione :descrizione,
+      descrizione: descrizione,
       prezzo: prezzo,
-      proprietario : currentShop?._id
+      proprietario: currentShop?._id
     })
   }
+  
   return (
     <>
       <Container>
@@ -90,14 +91,14 @@ export default function Locale() {
           <Offcanvas.Title>Offcanvas</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <Form  onSubmit={handleSubmit}>
+          <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" >
               <Form.Label>nome</Form.Label>
-              <Form.Control type="text"value={nome} onChange={handleNome} />
+              <Form.Control type="text" value={nome} onChange={handleNome} />
             </Form.Group>
             <Form.Group className="mb-3" >
               <Form.Label>descrizione</Form.Label>
-              <Form.Control type="text"value={descrizione} onChange={handleDescrizione} />
+              <Form.Control type="text" value={descrizione} onChange={handleDescrizione} />
             </Form.Group>
             <Form.Group className="mb-3" >
               <Form.Label>prezzo</Form.Label>

@@ -12,7 +12,7 @@ router.post("/shopRegister", async (req, res) => {
         email: req.body.email,
         tags: req.body.tags,
         address: req.body.address,
-        descrizione:req.body.descrizione,
+        descrizione: req.body.descrizione,
         password: CryptoJS.AES.encrypt(req.body.password, process.env.PASS_SEC),
 
     });
@@ -47,7 +47,7 @@ router.post("/shoplogin", async (req, res) => {
         const accessToken = await jwt.sign(
             {
                 email: shop.email,
-                password:shop.password
+                password: shop.password
             },
             process.env.JWT_SEC,
             { expiresIn: "3d" }
@@ -59,27 +59,26 @@ router.post("/shoplogin", async (req, res) => {
     }
 })
 //SHOW RESTURANT
-router.get("/show", async (req,res)=>{
-try{
-    const shops = await Locali.find();
-    res.status(201).json(shops)
-}catch (err){
-    res.status(500).json(err)
-}
-})
-//SHOW SELECTED RESTURANT
-router.get("/showone",async(req,res)=>{
-    try{
-     const shop =  await Locali.findById(req.params.id)
-     
-    }catch(err){
+router.get("/show", async (req, res) => {
+    try {
+        if(req.query.tags === ""){
+            var query = {tags : ["Pizza","Pesce","Carne","Vegetariano","Vegano","Etnico","Panini"]};
+        }else{
+            var query = { tags: req.query.tags }
+        }
+        
 
+        const shops = await Locali.find(query);
+        res.status(201).json(shops)
+    } catch (err) {
+        res.status(500).json(err)
     }
 })
+
 //GET NAME BY ID 
-router.get("/getname",async(req,res)=>{
+router.get("/getname", async (req, res) => {
     try {
-        var query = {_id : req.query.id}
+        var query = { _id: req.query.id }
         const locale = await Locali.findOne(query)
         res.status(200).json(locale)
     } catch (error) {

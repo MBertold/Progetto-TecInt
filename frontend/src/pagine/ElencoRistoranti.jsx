@@ -6,24 +6,26 @@ import React from 'react'
 import axios from "axios";
 import ShopCard from "../componenti/ShopCard";
 import ElencoTag from "../componenti/ElencoTag";
-import Button from "react-bootstrap/esm/Button";
 function ElencoRistoranti() {
+    const [tags, setTags] = useState('')
+
     const [post, setPost] = useState();
+
     useEffect(() => {
-        axios.get("http://localhost:5000/api/shop/show")
+        axios.get("http://localhost:5000/api/shop/show", { params: { tags: tags } })
             .then((res) => {
                 setPost(res.data)
             })
     })
+    const handleTags = (e) => {
+        setTags(e.target.value)
+    }
     return (
         <Container>
-            <Container >
+            <Container style={{"marginTop":"10vh","marginBottom":"10vh"}}>
                 <Row>
-                    <Form style={{margin:"40px"}}>
-                        <ElencoTag />
-                        <Button>
-                            Cerca
-                        </Button>
+                    <Form>
+                    <ElencoTag onChange={handleTags} />
                     </Form>
                 </Row>
             </Container>

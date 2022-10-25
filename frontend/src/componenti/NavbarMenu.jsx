@@ -8,7 +8,6 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import CartItem from './CartItem';
 import axios from 'axios';
 import Container from "react-bootstrap/esm/Container";
-import Row from 'react-bootstrap/esm/Row';
 import OrderButton from './OrderButton';
 
 
@@ -34,17 +33,25 @@ function NavbarMenu() {
     window.location.reload();
 
   };
+
   useEffect(() => {
-    axios.get("http://localhost:5000/api/cart/show/", { params: { username: currentUser?.username } })
+    if(currentUser){
+      axios.get("http://localhost:5000/api/cart/show/", { params: { username: currentUser?.username } })
       .then((res) => {
         setPost(res.data)
 
       })
+    }
+    
       
   })
   useEffect(()=>{
-    axios.get(`http://localhost:5000/api/cart/total/`, { params: { username: currentUser?.username } }).then((res)=>{setTotal(res.data)})
+    if(currentUser){
+      axios.get(`http://localhost:5000/api/cart/total/`, { params: { username: currentUser?.username } }).then((res)=>{setTotal(res.data)})
+    }
+    
   })
+  
   const handleCart = (e) => {
     e.preventDefault();
     handleShow();
