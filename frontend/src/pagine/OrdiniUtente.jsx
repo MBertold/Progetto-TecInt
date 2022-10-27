@@ -28,7 +28,7 @@ export default function OrdiniUtente() {
 
 
   return (
-    <Container style={{"marginTop":"10vh"}}>
+    <Container className='album py-5 bg-light' style={{"marginTop":"10vh"}}>
       <Row>
         {
           post?.map(card => <SchedaOrdine

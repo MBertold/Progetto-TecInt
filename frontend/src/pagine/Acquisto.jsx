@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import Container from 'react-bootstrap/esm/Container'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import Form from 'react-bootstrap/Form';
 import authService from '../componenti/servizi';
 import { PaymentInputsWrapper, usePaymentInputs } from 'react-payment-inputs';
 import images from 'react-payment-inputs/images';
 import axios from 'axios';
 export default function Acquisto() {
+    const navigate = useNavigate()
     const location = useLocation()
     const [currentUser, setCurrentUser] = useState(undefined);
     const [cardNumber, setCardNumber] = useState()
@@ -53,7 +54,7 @@ export default function Acquisto() {
 
 
             })
-
+            navigate('/')
 
         }
     }

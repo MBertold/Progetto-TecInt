@@ -22,10 +22,10 @@ function ElencoRistoranti() {
     }
     return (
         <Container>
-            <Container style={{"marginTop":"10vh","marginBottom":"10vh"}}>
+            <Container style={{ "marginTop": "10vh", "marginBottom": "10vh" }}>
                 <Row>
                     <Form>
-                    <ElencoTag onChange={handleTags} />
+                        <ElencoTag onChange={handleTags} />
                     </Form>
                 </Row>
             </Container>
