@@ -36,7 +36,7 @@ function ElencoRistoranti() {
                             post?.map(card => (<ShopCard
                                 key={card._id}
                                 id={card._id}
-                                nome={card.nome}
+                                nome={card.name}
                                 tags={card.tags}
                                 address={card.address}
                                 descrizione={card.descrizione}

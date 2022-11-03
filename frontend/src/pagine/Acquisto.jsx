@@ -59,7 +59,7 @@ export default function Acquisto() {
         }
     }
     return (
-        <Container style={{ "width": "100%", "height": "100%", "display": "flex", "flexDirection": "row", margin: "0", "justifyContent": "space-around", "alignItems": "center", "marginTop": "20vh" }}>
+        <Container style={{ "width": "100%", "height": "100%", "display": "flex", "flexDirection": "row", "margin": "0", "justifyContent": "space-around", "alignItems": "center", "marginTop": "20vh" }}>
             <Container style={{ "border": "1px solid black", "width": "auto", "marginLeft": "5vw" }}>
                 <Container>
                     <h2>Riepilogo ordine</h2>
@@ -78,12 +78,11 @@ export default function Acquisto() {
                         ))
                     }
                 </Container>
-
             </Container>
 
 
 
-            <Container style={{ "width": "30vw" }} >
+            <Container style={{ "width": "30vw", "display": "flex", "flexDirection": "column" }} >
                 <Form onSubmit={handleSubmit}>
                     <h3>Inserisci i dati di pagamento</h3>
                     <Container>
@@ -93,8 +92,9 @@ export default function Acquisto() {
                             <input {...getExpiryDateProps({ onChange: handleCardED })} value={cardED} />
                             <input {...getCVCProps({ onChange: handleCardCVC })} value={cardCVC} />
                         </PaymentInputsWrapper>
-                        <button className='btn btn-primary' type='submit'>Paga</button>
+                        
                     </Container>
+                    <button className='btn btn-primary' type='submit' style={{ "width": "90px", "marginTop": "10px" }}>Paga</button>
                 </Form>
             </Container>
         </Container>

@@ -24,7 +24,7 @@ export default function UserLocale(props) {
     <Container>
       <Container className='py-5 text-center'>
         <Row className='py-lg-5'>
-          <h1 className="fw-light">{location.state?.name}</h1>
+          <h1 className="fw-light">{location.state?.nome}</h1>
           <p className="lead text-muted">{location.state?.tags}</p>
           <p className="lead text-muted">{location.state?.address}</p>
           <p className="lead text-muted">{location.state?.descrizione}</p>

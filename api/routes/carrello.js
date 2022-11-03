@@ -33,8 +33,6 @@ router.post("/add/:username", async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-
-
 })
 //DELETE ITEM
 router.put("/delete/:username", async (req, res) => {
