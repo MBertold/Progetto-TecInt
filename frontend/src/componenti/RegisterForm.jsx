@@ -9,6 +9,7 @@ function Register() {
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [address, setAddress] = useState('')
   const navigate = useNavigate();
   const handleEmail = (e) => {
     setEmail(e.target.value)
@@ -20,12 +21,16 @@ function Register() {
   const handlePassword = (e) => {
     setPassword(e.target.value)
   }
+  const handleAddress = (e) => {
+    setAddress(e.target.value)
+  }
 
   const handleApi = () => {
     axios.post('http://localhost:5000/api/auth/register', {
       username: username,
       email: email,
-      password: password
+      password: password,
+      address:address
     }).then((result) => {
       if (result.data.accessToken) {
         localStorage.setItem("user", JSON.stringify(result.data))
@@ -51,14 +56,18 @@ function Register() {
       <Form.Group className="mb-3" >
         <Form.Label>Email address</Form.Label>
         <Form.Control type="email" placeholder="Enter email" name='email' value={email} onChange={handleEmail} />
-        <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
-        </Form.Text>
+        
       </Form.Group>
 
       <Form.Group className="mb-3" >
         <Form.Label>Password</Form.Label>
         <Form.Control type="password" placeholder="Password" name='password' value={password} onChange={handlePassword} />
+      </Form.Group>
+      <Form.Group className="mb-3" >
+        <Form.Label>Address</Form.Label>
+        <Form.Control type="text" placeholder="Enter Address" name='address' value={address} onChange={handleAddress} />
+        <Form.Text className="text-muted">
+        </Form.Text>
       </Form.Group>
       <Button variant="primary" type="submit">
         Submit

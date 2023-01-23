@@ -9,7 +9,6 @@ router.post("/add/",async(req,res)=>{
         nome:req.body.nome,
         descrizione:req.body.descrizione,
         prezzo:req.body.prezzo,
-        //imageUrl:req.body.imageUrl
         proprietario:req.body.proprietario
     });
     try{

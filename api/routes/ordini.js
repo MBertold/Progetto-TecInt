@@ -1,8 +1,6 @@
 const router = require("express").Router();
 const User = require("../modelli/user")
-const Prodotti = require("../modelli/prodotti")
 const Ordine = require("../modelli/ordine")
-const moment = require('moment');
 
 
 router.post("/add", async (req, res) => {
