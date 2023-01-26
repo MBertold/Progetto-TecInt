@@ -4,9 +4,9 @@ const ordineSchema = new mongoose.Schema(
     {
         nomeUtente: { type: String, required: true },
         ncard: { type: String, required: true },
+        indirizzo : {type:String},
         idLocale: { type: String },
         items: { type: Object },
-        isAccepted: { type: Boolean, default: false },
         giorno: String,
         mese: String,
         anno: String

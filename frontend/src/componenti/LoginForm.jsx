@@ -6,8 +6,8 @@ import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
 function Login() {
-  const [username, setUsername] = useState('marco')
-  const [password, setPassword] = useState('pippons')
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
   const navigate = useNavigate();
   const handleUsername = (e) => {
     setUsername(e.target.value)
@@ -19,21 +19,21 @@ function Login() {
 
   const handleApi = (event) => {
     event.preventDefault();
+    
     axios.post('http://localhost:5000/api/auth/login', {
       username: username,
       password: password
     }).then((result) => {
-      if (result.data.accessToken) {
-        localStorage.setItem("user", JSON.stringify(result.data));
+      if (result.data.user) {
+        localStorage.setItem("user", JSON.stringify(result.data.user));
         navigate("/");
         window.location.reload();
+      }else{
+        alert('Please check your username and password')
       }
 
     })
-      .catch(error => {
-        alert('service error')
-        console.log(error)
-      })
+    
   }
 
 

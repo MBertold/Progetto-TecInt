@@ -50,8 +50,8 @@ export default function Acquisto() {
                 cart: location.state.cart,
 
                 nomeUtente: currentUser.username,
-                ncard: cardNumber
-
+                ncard: cardNumber,
+                indirizzo : currentUser.address
 
             })
             navigate('/')

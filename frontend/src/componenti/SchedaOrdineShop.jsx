@@ -6,6 +6,7 @@ export default function SchedaOrdineShop(props) {
         <div className='card-body'>
           <h4 className='card-title'>Ordine del {props.titolo[0] + "/" + props.titolo[1] + "/" + props.titolo[2]}</h4>
           <h5 className='card-title'>Cliente : {props.cliente}</h5>
+          <h5 className='card-title'>Indirizzo : {props.indirizzo}</h5>
           {
             props.items.map(card => (
               <>

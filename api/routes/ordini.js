@@ -7,6 +7,7 @@ router.post("/add", async (req, res) => {
     const date = new Date();
     const cart = req.body.cart;
     const ncard = req.body.ncard;
+    const indirizzo = req.body.indirizzo;
     const nomeUtente = req.body.nomeUtente;
     const orderShop = [];
     for (const item in cart) {
@@ -28,6 +29,7 @@ router.post("/add", async (req, res) => {
             nomeUtente: nomeUtente,
             ncard: ncard,
             items: cartTemp,
+            indirizzo : indirizzo,
             idLocale: orderShop[i],
             giorno: date.getDate(),
             mese: date.getMonth(),

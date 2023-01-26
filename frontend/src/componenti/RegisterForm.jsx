@@ -32,16 +32,14 @@ function Register() {
       password: password,
       address:address
     }).then((result) => {
-      if (result.data.accessToken) {
-        localStorage.setItem("user", JSON.stringify(result.data))
+      if (result.data.savedUser) {
+        localStorage.setItem("user", JSON.stringify(result.data.savedUser))
         navigate("/");
         window.location.reload();
+      }else{
+        alert("Utente già registrato");
       }
     })
-      .catch(error => {
-        alert('service error')
-        console.log(error)
-      })
   }
 
 

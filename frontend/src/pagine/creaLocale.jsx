@@ -50,14 +50,14 @@ function Ristoranti() {
     })
       .then((result) => {
         console.log(result)
-        if (result.data.accessToken) {
-          localStorage.setItem("shop", JSON.stringify(result.data))
+        if (result.data.savedShop) {
+          localStorage.setItem("shop", JSON.stringify(result.data.savedShop))
           navigate("/ristorante");
+        }else{
+          alert("Locale già registrato")
         }
       })
-      .catch(error => {
-        console.log(error)
-      })
+      
   }
   return (
     <>

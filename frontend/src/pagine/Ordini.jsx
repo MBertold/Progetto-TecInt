@@ -34,6 +34,7 @@ export default function OrdiniUtente() {
           post?.map(card => <SchedaOrdineShop
             key={card._id}
             cliente ={card.nomeUtente}
+            indirizzo = {card.indirizzo}
             items={card.items}
             titolo={[card.giorno, card.mese, card.anno]}
           />)

@@ -22,16 +22,14 @@ function ShopLogin() {
             email: email,
             password: password
         }).then((result) => {
-            if (result.data.accessToken) {
-                localStorage.setItem("shop", JSON.stringify(result.data));
+            if (result.data.shop) {
+                localStorage.setItem("shop", JSON.stringify(result.data.shop));
                 navigate("/ristorante");
+            }else{
+                alert('Please check your username and password')
             }
 
         })
-            .catch(error => {
-                alert('service error')
-                console.log(error)
-            })
     }
 
 
