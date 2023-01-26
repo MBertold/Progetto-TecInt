@@ -4,7 +4,6 @@ const app = express()
 const port = 5000
 const mongoose = require("mongoose")
 const dotenv = require("dotenv")
-const userRoute = require("./routes/user")
 const authRoute = require("./routes/auth")
 const shopRoute = require("./routes/locali")
 const itemRoute = require("./routes/prodotti")
@@ -24,7 +23,6 @@ mongoose.connect(
     ).then(()=>console.log("connessione riuscita")).catch((err)=> {console.log(err)});
 
 app.use(express.json());
-app.use("/api/user", userRoute);
 app.use("/api/auth",authRoute);
 app.use("/api/shop",shopRoute);
 app.use("/api/item",itemRoute);
