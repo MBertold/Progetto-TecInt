@@ -6,8 +6,8 @@ import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
 function ShopLogin() {
-    const [email, setEmail] = useState('pippo@pippo.com')
-    const [password, setPassword] = useState('pippo')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
     const navigate = useNavigate();
     const handleEmail = (e) => {
         setEmail(e.target.value)
